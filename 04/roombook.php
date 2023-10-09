@@ -10,7 +10,7 @@ if(!isset($_SESSION["user"]))
 		if(!isset($_GET["rid"]))
 		{
 				
-			 header("location:index.php");
+			 header("location:index. php");
 		}
 		else {
 				$curdate=date("Y/m/d");
