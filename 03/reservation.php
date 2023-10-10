@@ -11,7 +11,7 @@ include('db.php')
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-        <!-- Custom Styles-->
+        <!-- Custom Styles--> 
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
      <!-- Google Fonts-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
