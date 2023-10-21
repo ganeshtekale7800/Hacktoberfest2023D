@@ -118,9 +118,9 @@ ob_start();
 											$id = $row['id'];
 											$us = $row['usname'];
 											$ps = $row['pass'];
-											if($id % 2 ==0 )
-											{
-												echo"<tr class='gradeC'>
+											$rowClass = $id % 2 == 0 ? 'gradeC' : 'gradeU';
+
+											echo"<tr class='" + $rowClass + "'>
 													<td>".$id."</td>
 													<td>".$us."</td>
 													<td>".$ps."</td>
@@ -129,23 +129,7 @@ ob_start();
 															 Update 
 													</button></td>
 													<td><a href=usersettingdel.php?eid=".$id ." <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
-												</tr>";
-											}
-											else
-											{
-												echo"<tr class='gradeU'>
-													<td>".$id."</td>
-													<td>".$us."</td>
-													<td>".$ps."</td>
-													
-													<td><button class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
-                              Update 
-                            </button></td>
-													<td><a href=usersettingdel.php?eid=".$id ." <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
-												</tr>";
-											
-											}
-										
+												</tr>";										
 										}
 										
 									?>
