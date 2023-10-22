@@ -203,42 +203,34 @@ include('db.php')
 						<?php
 							if(isset($_POST['submit']))
 							{
-							$code1=$_POST['code1'];
-							$code=$_POST['code']; 
-							if($code1!="$code")
-							{
-							$msg="Invalide code"; 
-							}
-							else
-							{
-							
+								$code1=$_POST['code1'];
+								$code=$_POST['code']; 
+								if($code1!="$code")
+								{
+									$msg="Invalide code"; 
+								}
+								else
+								{
+								
 									$con=mysqli_connect("localhost","root","","hotel");
 									$check="SELECT * FROM roombook WHERE email = '$_POST[email]'";
 									$rs = mysqli_query($con,$check);
 									$data = mysqli_fetch_array($rs, MYSQLI_NUM);
+									$msgForAlert = '';
 									if($data[0] > 1) {
-										echo "<script type='text/javascript'> alert('User Already in Exists')</script>";
-										
+										$msgForAlert = 'User Already in Exists';										
 									}
-
 									else
 									{
 										$new ="Not Conform";
 										$newUser="INSERT INTO `roombook`(`Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `TRoom`, `Bed`, `NRoom`, `Meal`, `cin`, `cout`,`stat`,`nodays`) VALUES ('$_POST[title]','$_POST[fname]','$_POST[lname]','$_POST[email]','$_POST[nation]','$_POST[country]','$_POST[phone]','$_POST[troom]','$_POST[bed]','$_POST[nroom]','$_POST[meal]','$_POST[cin]','$_POST[cout]','$new',datediff('$_POST[cout]','$_POST[cin]'))";
-										if (mysqli_query($con,$newUser))
-										{
-											echo "<script type='text/javascript'> alert('Your Booking application has been sent')</script>";
-											
-										}
-										else
-										{
-											echo "<script type='text/javascript'> alert('Error adding user in database')</script>";
-											
-										}
+										$msgForAlert = mysqli_query($con,$newUser) ? 'Your Booking application has been sent' : 'Error adding user in database';
 									}
-
-							$msg="Your code is correct";
-							}
+	
+									echo "<script type='text/javascript'> alert('" + $msgForAlert + "')</script>";
+	
+									$msg="Your code is correct";
+								}
 							}
 							?>
 						</form>
